@@ -1,5 +1,5 @@
 import express from 'express';
-import { db } from './database/connection';
+import usersRoutes from './routes/users.routes';
 
 const app = express();
 app.use(express.json());
@@ -12,22 +12,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/users', async (req, res) => {
-    try {
-        const [users] = await db.query(`
-            SELECT id, name, email, created_at, updated_at
-            FROM users
-        `);
-
-        res.json(users);
-    } catch (error) {
-        console.error('Erro ao buscar usuários:', error);
-
-        res.status(500).json({
-            error: 'Erro interno do servidor'
-        });
-    }
-});
+app.use('/users', usersRoutes);
 
 app.listen(PORT, () => {
     console.log(`BetterNotes API rodando em http://localhost:${PORT}`);
