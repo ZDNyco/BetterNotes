@@ -12,20 +12,22 @@ app.get('/', (req, res) => {
     });
 });
 
-
-async function testConnection() {
+app.get('/users', async (req, res) => {
     try {
-        const connection = await db.getConnection();
+        const [users] = await db.query(`
+            SELECT id, name, email, created_at, updated_at
+            FROM users
+        `);
 
-        console.log('Conexão com MySQL realizada com sucesso!');
-
-        connection.release();
+        res.json(users);
     } catch (error) {
-        console.error('Erro ao conectar com MySQL:', error);
-    }
-}
-testConnection();
+        console.error('Erro ao buscar usuários:', error);
 
+        res.status(500).json({
+            error: 'Erro interno do servidor'
+        });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`BetterNotes API rodando em http://localhost:${PORT}`);
