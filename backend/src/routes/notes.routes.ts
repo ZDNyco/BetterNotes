@@ -5,19 +5,24 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     try {
-        const [users] = await db.query(`
-            SELECT 
+        const [notes] = await db.query(`
+            SELECT
                 id,
-                name,
-                email,
+                user_id,
+                title,
+                content,
+                color,
+                is_pinned,
+                is_archived,
                 created_at,
                 updated_at
-            FROM users
+            FROM notes
+            WHERE deleted_at IS NULL
         `);
 
-        res.json(users);
+        res.json(notes);
     } catch (error) {
-        console.error('Erro ao buscar usuários:', error);
+        console.error('Erro ao buscar notas:', error);
 
         res.status(500).json({
             error: 'Erro interno do servidor'

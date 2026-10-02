@@ -1,5 +1,6 @@
 import express from 'express';
 import usersRoutes from './routes/users.routes';
+import notesRoutes from './routes/notes.routes';
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/users', usersRoutes);
+app.use('/notes', notesRoutes);
 
 app.listen(PORT, () => {
     console.log(`BetterNotes API rodando em http://localhost:${PORT}`);
