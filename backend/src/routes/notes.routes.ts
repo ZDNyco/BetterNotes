@@ -83,4 +83,34 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const [result] = await db.query(`
+            UPDATE notes
+            SET deleted_at = CURRENT_TIMESTAMP
+            WHERE id = ? AND deleted_at IS NULL
+        `, [id]);
+
+        const deleteResult = result as any;
+
+        if (deleteResult.affectedRows === 0) {
+            return res.status(404).json({
+                error: 'Nota não encontrada'
+            });
+        }
+
+        res.json({
+            message: 'Nota excluída com sucesso!'
+        });
+    } catch (error) {
+        console.error('Erro ao excluir nota:', error);
+
+        res.status(500).json({
+            error: 'Erro interno do servidor'
+        });
+    }
+});
+
 export default router;
