@@ -52,4 +52,35 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, content } = req.body;
+
+        const [result] = await db.query(`
+            UPDATE notes
+            SET title = ?, content = ?
+            WHERE id = ? AND deleted_at IS NULL
+        `, [title, content, id]);
+
+        const updateResult = result as any;
+
+        if (updateResult.affectedRows === 0) {
+            return res.status(404).json({
+                error: 'Nota não encontrada'
+            });
+        }
+
+        res.json({
+            message: 'Nota atualizada com sucesso!'
+        });
+    } catch (error) {
+        console.error('Erro ao atualizar nota:', error);
+
+        res.status(500).json({
+            error: 'Erro interno do servidor'
+        });
+    }
+});
+
 export default router;
