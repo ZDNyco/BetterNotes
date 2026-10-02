@@ -30,4 +30,26 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/', async (req, res) => {
+    try {
+        const { user_id, title, content } = req.body;
+
+        const [result] = await db.query(`
+            INSERT INTO notes (user_id, title, content)
+            VALUES (?, ?, ?)
+        `, [user_id, title, content]);
+
+        res.status(201).json({
+            message: 'Nota criada com sucesso!',
+            id: (result as any).insertId
+        });
+    } catch (error) {
+        console.error('Erro ao criar nota:', error);
+
+        res.status(500).json({
+            error: 'Erro interno do servidor'
+        });
+    }
+});
+
 export default router;
