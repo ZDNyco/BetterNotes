@@ -2,18 +2,38 @@
 <div class="home-container">
 
   <header class="topbar">
+    
     <button class="user-button" type="button" aria-label="Menu do usuário">
       <span class="user-icon">U</span>
     </button>
 
     <span class="app-name">BetterNotes</span>
 
-    <button class="menu-button" type="button" aria-label="Abrir menu">
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Abrir menu"
+      [attr.aria-expanded]="menuOpen"
+      (click)="toggleMenu()"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
   </header>
+  @if (menuOpen) {
+    <div class="menu-backdrop" (click)="closeMenu()">
+
+      <nav class="dropdown-menu" (click)="$event.stopPropagation()">
+
+        <a routerLink="/notes" (click)="closeMenu()">
+          Abrir todas as notas
+        </a>
+
+      </nav>
+
+    </div>
+  }
 
   <main class="notes-content">
 

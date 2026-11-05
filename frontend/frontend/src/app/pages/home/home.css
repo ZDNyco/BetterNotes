@@ -225,3 +225,34 @@
     flex-wrap: wrap;
   }
 }
+
+/* Menu suspenso */
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 90px;
+  right: 6%;
+  min-width: 220px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f3f1;
+}
