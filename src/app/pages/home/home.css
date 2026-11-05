@@ -1,0 +1,258 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #302b33;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.home-container {
+  min-height: 100vh;
+  background: #f4f3f1;
+}
+
+/* BARRA SUPERIOR */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 82px;
+  padding: 16px 6%;
+  background: #ffbf5b;
+}
+
+.user-button,
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.user-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff0d5;
+}
+
+.user-icon {
+  font-size: 20px;
+  font-weight: 700;
+  color: #594936;
+}
+
+.app-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #594936;
+}
+
+.menu-button {
+  flex-direction: column;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.menu-button span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  border-radius: 4px;
+  background: #594936;
+}
+
+/* CONTEÚDO */
+
+.notes-content {
+  width: min(1100px, 88%);
+  margin: 0 auto;
+  padding: 48px 0 28px;
+}
+
+.welcome {
+  margin-bottom: 32px;
+}
+
+.welcome h1 {
+  margin: 0 0 10px;
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.2;
+}
+
+.welcome p {
+  margin: 0;
+  color: #777078;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* NOTAS */
+
+.recent-notes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 26px;
+  border-radius: 20px;
+  overflow-wrap: anywhere;
+}
+
+.featured-note {
+  min-height: 260px;
+  background: #35b4f5;
+}
+
+.secondary-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.lilac-note {
+  min-height: 200px;
+  background: #dfa8ed;
+}
+
+.yellow-note {
+  min-height: 200px;
+  background: #ffed88;
+}
+
+.note-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.note-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+}
+
+.note-menu {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.note-card h2 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.featured-note h2 {
+  font-size: 27px;
+}
+
+.note-card p {
+  max-width: 580px;
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.note-date {
+  margin-top: auto;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* RODAPÉ */
+
+.notes-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 18px 0;
+  border-top: 1px solid #dedbd8;
+  color: #817a80;
+  font-size: 12px;
+}
+
+/* TELAS PEQUENAS */
+
+@media (max-width: 600px) {
+  .topbar {
+    min-height: 70px;
+    padding: 12px 5%;
+  }
+
+  .notes-content {
+    width: 90%;
+    padding-top: 32px;
+  }
+
+  .secondary-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-note {
+    min-height: 230px;
+  }
+
+  .lilac-note,
+  .yellow-note {
+    min-height: 180px;
+  }
+
+  .note-card {
+    padding: 22px;
+  }
+
+  .notes-footer {
+    flex-wrap: wrap;
+  }
+}
+
+/* Menu suspenso */
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 90px;
+  right: 6%;
+  min-width: 220px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f3f1;
+}
