@@ -191,6 +191,117 @@
   font-size: 12px;
 }
 
+/* Fundo do formulário */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* Janela de criação */
+
+.note-modal {
+  width: 100%;
+  max-width: 480px;
+  padding: 28px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.note-modal h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.note-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-modal label {
+  font-weight: 600;
+  color: #444;
+}
+
+.note-modal input[type="text"],
+.note-modal textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.note-modal textarea {
+  resize: vertical;
+}
+
+.note-modal input[type="color"] {
+  width: 55px;
+  height: 38px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Botões */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.modal-actions button,
+.dropdown-menu button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.cancel-button {
+  background-color: #eee;
+  color: #333;
+}
+
+.save-button {
+  background-color: #ffbf5b;
+  color: #333;
+}
+
+.save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Opção do menu */
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #333;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f4f3f1;
+}
+
+
 /* TELAS PEQUENAS */
 
 @media (max-width: 600px) {
